@@ -18,7 +18,7 @@ from utils.create_datasets import get_MNIST
 import numpy as np
 from PIL import Image, ImageTk
 import tkinter.font as tkFont
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 
 
