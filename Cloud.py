@@ -23,7 +23,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 
-# Function to listen for upcoming messages from a client
+
 class Cloud:
     def __init__(self,args,model,dataset):
         self.args=args
@@ -113,11 +113,11 @@ class Cloud:
         self.Start_FL.place(relx = 0.5, rely =0.87)
        
         try:
-          self.server.bind((HOST, PORT))
-          print(f"Running the server on {HOST}:{PORT}")
-          self.add_message(f"Cloud> Running the server on {HOST}:{PORT} \n")
+          self.server.bind((self.HOST, self.PORT))
+          print(f"Running the server on {self.HOST}:{self.PORT}")
+          self.add_message(f"Cloud> Running the server on {self.HOST}:{self.PORT} \n")
         except Exception as e:
-           print(f"Unable to bind to host {HOST} and port {PORT} because of {e}")       
+           print(f"Unable to bind to host {self.HOST} and port {self.PORT} because of {e}")       
 #*****************************************************************************************#
     def add_message(self,message):
      
@@ -481,7 +481,7 @@ if __name__ == '__main__':
     n_samples_train =1500, n_samples_test=250, n_clients =2,  
     batch_size =50, shuffle =True)
 
-    cloud =Cloud(Host=HOST,args=args,model=Model_Fashion(),dataset=test[0])
+    cloud =Cloud(args=args,model=Model_Fashion(),dataset=test[0])
 
     cloud.server.listen(args.LISTENER_LIMIT)
     threading.Thread(target=cloud.receive_fogs, args=()).start()

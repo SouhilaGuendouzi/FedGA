@@ -836,25 +836,12 @@ class Fog:
        
         self.i=0
         if (self.method_name=='FedAVG'):
-              self.weights_global=FedAvg(self.weights_locals)
-        elif (self.method_name=='ff'):
-             initial_population=self.weights_locals
-        
-             for d in self.weights_locals: # for each user
-                weight=[]
-                if isinstance(d, dict):
-                     for x in d.items():                    #get weights of each layer
-                         array = np.array(x[1], dtype='f')  #1 is a tensor
-                         array= array.flatten()
-                         weight= np.concatenate((weight, array), axis=0)
-                         initial_population[ self.i]= np.array(weight,dtype='f')
-
-                self.i= self.i+1                            #next weight vector (user)
-             self.weights_global = FedGA(initial_population,self.global_model,self.dataset)
+              self.weights_global=FedAVG(self.weights_locals)
+    
 
         elif (self.method_name=='FedPer'):
 
-             self.weights_global=FedPer(self.weights_locals, self.global_model)
+             self.weights_global=FedPer(self.weights_locals)
 
         elif (self.method_name=='FedGA'):
             
@@ -880,8 +867,8 @@ class Fog:
                 self.i= self.i+1 # next weight vector (user)
               
               
-              self.weights_global = FedPerGA(initial_population,self.global_model.classification,self.dataset)
-
+              self.weights_global = FedGA(initial_population,self.global_model.classification,self.dataset)
+         # update the global model
         if (self.method_name=='FedAVG'):
              self.global_model.load_state_dict(self.weights_global)
         else :
