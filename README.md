@@ -4,7 +4,7 @@ FedGA-ICPS is a federated learning (FL) framework based on genetic algorithms fo
 ![](pictures/FedGA_tool.png)
 
 
-The neural networks' models are defined in entities/Models.py.  <br />
-The execution of Cloud.py, Fog.py, and Edge.py is lanched independtly using utils/CMD.txt file that contains commands as examples.
-The save folder contains the results at the last FL round.
+The neural networks' models are defined in entities/Models.py.  <br/>
+The execution of Cloud.py, Fog.py, and Edge.py is lanched independtly using utils/CMD.txt file that contains commands as examples. <br/>
+The  folder save contains the results at the last FL round. <br/>
 
